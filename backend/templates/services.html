@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="map-container">
+    <h1>Map Simulation</h1>
+    <form action="{% url 'services' %}" method="POST">
+        {% csrf_token %}
+        <div class="map-form-group">
+            <label for="pickup">Pickup Location:</label>
+            <input type="text" id="pickup" name="pickup" placeholder="Enter pickup location" oninput="checkFormValidity()">
+        </div>
+        <div class="map-form-group">
+            <label for="dropoff">Dropoff Location:</label>
+            <input type="text" id="dropoff" name="dropoff" placeholder="Enter dropoff location" oninput="checkFormValidity()">
+        </div>
+        <div class="map-form-group">
+            <button id="requestRideBtn" type="submit" class="disabled-button" disabled>Request a Ride</button>
+        </div>    
+    </form>
+    <div id="map">{{ map|safe }}</div> 
+</div>
+
+<script>
+function checkFormValidity() {
+    var pickup = document.getElementById("pickup").value;
+    var dropoff = document.getElementById("dropoff").value;
+    var requestRideBtn = document.getElementById("requestRideBtn");
+    
+    // Enable the button if both fields have values, otherwise disable it
+    if (pickup.trim() !== "" && dropoff.trim() !== "") {
+        requestRideBtn.disabled = false;
+        requestRideBtn.classList.remove("disabled-button");
+    } else {
+        requestRideBtn.disabled = true;
+        requestRideBtn.classList.add("disabled-button");
+    }
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DRT V1</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            height: 100px;
+            margin: 10px;
+        }
+
+        .map-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .map-form-group {
+            margin-bottom: 10px;
+        }
+
+        .map-form-group label {
+            display: block;
+            font-weight: bold;
+        }
+
+        .map-form-group input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .map-form-group button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="map-container">
+        <h1>Map Simulation</h1>
+        <div class="map-form-group">
+            <label for="pickup">Pickup Location:</label>
+            <input type="text" id="pickup" name="pickup" placeholder="Enter pickup location">
+        </div>
+        <div class="map-form-group">
+            <label for="dropoff">Dropoff Location:</label>
+            <input type="text" id="dropoff" name="dropoff" placeholder="Enter dropoff location">
+        </div>
+		<div class="map-form-group">
+            <button id="requestRideBtn">Request a Ride</button>
+        </div>    
+        <div id="map">{{ map|safe }}</div> 
+    </div>
+    
+</body>
+</html>
